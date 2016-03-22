@@ -374,7 +374,7 @@ class LibyuvLinkSetup():
       elif os.path.isdir(link_path):
         actions.append(Rmtree(link_path))
       else:
-        raise LinkError('Don\'t know how to plan: %s' % link_path)
+        raise LinkError('Don\'t know how to plan: {0!s}'.format(link_path))
 
     # Create parent directories to the target link if needed.
     target_parent_dirs = os.path.dirname(link_path)
