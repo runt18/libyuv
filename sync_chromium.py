@@ -124,7 +124,7 @@ def main():
     gclientfile = os.path.join(opts.chromium_dir, '.gclient')
     with open(gclientfile, 'rb') as spec:
       spec = spec.read().splitlines()
-      spec[-1] = 'cache_dir = %r' % (cache_path,)
+      spec[-1] = 'cache_dir = {0!r}'.format(cache_path)
     with open(gclientfile + '.tmp', 'wb') as f:
       f.write('\n'.join(spec))
 
@@ -143,7 +143,7 @@ def main():
   if target_os_list:
     args += ['--deps=' + target_os_list]
 
-  print 'Running "%s" in %s' % (' '.join(args), opts.chromium_dir)
+  print 'Running "{0!s}" in {1!s}'.format(' '.join(args), opts.chromium_dir)
   ret = subprocess.call(args, cwd=opts.chromium_dir, env=env)
   if ret == 0:
     with open(flag_file, 'wb') as f:
